@@ -8,55 +8,27 @@
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body>
-  <p id="id_1">1. JS側にonclick書いてクリックイベント発火。</p>
-    <p id="id_2">2. JSでは無名関数も使えるよ！</p>
-    <p onclick="pClick()">3. HTMLでonclick属性書いた。クリックしてみて！</p>
-    <p id="id_3" class="foo-before">4. クリックするたび色変わるよ！（クラスの入れ替えをjQueryで実装）</p>
-    <p id="id_4">5. クリックするとCSS追加されるよ！</p>
+<script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
 
-    <script type="text/javascript">
-      // 変数定義（「//」から始まる行はコメントアウト）
-      var id_1 = document.getElementById("id_1");
-      var id_2 = document.getElementById("id_2");
-      var id_3 = document.getElementById("id_3");
+    ctx.beginPath();
+    ctx.rect(20, 40, 50, 50);
+    ctx.fillStyle = "#FF0000";
+    ctx.fill();
+    ctx.closePath();
 
-      // id_1（id_2）をクリックしたら、functionの中身を実行
-      id_1.onclick = function id1Click() {
-        alert("id_1クリックしたよ！");
-      }
-      id_2.onclick = function () {
-        alert("id_2クリック！関数名は書いても書かなくてもOK！");
-      }
+    ctx.beginPath();
+    ctx.arc(240, 160, 20, 0, Math.PI*2, false);
+    ctx.fillStyle = "green";
+    ctx.fill();
+    ctx.closePath();
 
-      // HTML側にクリックイベント記述
-      function pClick() {
-        alert("pタグクリック！HTMLでonclick属性書いたよ！");
-      }
-    </script>
-
-    <script type="text/javascript">
-      var stylesheet = document.styleSheets.item(0);
-
-      // 上で定義したid_4はここでも使えるよ！
-      id_4.onclick = function () {
-        //第2引数は、「CSSの何番目のルールにするか」。0始まりの番号。
-        stylesheet.insertRule("#id_4 {font-size: 20px;}", 0);
-        stylesheet.insertRule("#id_4 {background-color: pink;}", stylesheet.cssRules.length);
-      }
-    </script>
-
-    <!-- これでjQuery使える。ただしネットつながってれば。 -->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-
-    <script type="text/javascript">
-      // $関数はjQueryの定番！
-      $('#id_3').click(function() {
-        this.className = (this.className === 'foo-before') ? 'foo-after' : 'foo-before';
-      });
-
-      document.writeln("<p>6. JSでHTML記述！（リロードするたび少し表示が遅れてるけど、わかるかな？）</p>");
-      document.writeln("<p>7. URLは、" + document.URL + "だよ！</p>");
-      document.writeln("<p>8. このページのtitleは、「" + document.title + "」だよ！</p>");
-    </script>
+    ctx.beginPath();
+    ctx.rect(160, 10, 100, 40);
+    ctx.strokeStyle = "rgba(0, 0, 255, 0.5)";
+    ctx.stroke();
+    ctx.closePath();
+</script>
 </body>
 </html>
